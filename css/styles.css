@@ -10,3 +10,6 @@ body{
 .index{
     padding-top: 60px;
 }
+.div{
+    overflow: hidden;
+}
