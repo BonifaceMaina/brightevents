@@ -9,6 +9,32 @@
     <title>Dashboard</title>
 </head>
 <body>
+    <header>
+        <nav class="navbar navbar-inverse">
+            <div class="navbar-header">
+                <button type="button" data-target="#navbarcollapse" data-toggle="collapse" class="navbar-toggle">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="#" class="navbar-brand">Bright Events</a>
+            </div>
+            <div id="navbarcollapse" class="collapse navbar-collapse pull-right">
+                <ul class="nav navbar-nav">
+                    <li><a href="#"> About Us</a></li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Types of Events</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Crowdfunding</a></li>
+                            <li><a href="#">Reunions</a></li>
+                            <li><a href="#">Concerts</a></li>
+                            <li><a href="#">Meetups</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
     <div class="container">
         <div class="row">
             <div class="panel panel-default">
@@ -21,15 +47,76 @@
                             <a class="nav-link" data-toggle="tab" href="#panel2" role="tab">Other Events</a>
                         </li>
                     </ul>
-
+<!-- these are my events -->
                     <div class="tab-content">
                         <div class="tab-pane fade in active" id="panel1" role="tabpanel">
-                            <p>Now here is where all the action is orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ips</p>
+                            <table class="table">
+                                <thead>
+                                    <th>Event</th>
+                                    <th>Category</th>
+                                    <th>Date</th>
+                                    <th>Location</th>
+                                    <th>Attendees</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Barmitzvah</td>
+                                        <td>Party</td>
+                                        <td>1/12/17</td>
+                                        <td>Nairobi</td>
+                                        <td><a href="#">12</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Keziah's Birthday</td>
+                                        <td>Party</td>
+                                        <td>12/12/17</td>
+                                        <td>Thika</td>
+                                        <td><a href="#">1</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Baptism</td>
+                                        <td>Rite</td>
+                                        <td>1/12/17</td>
+                                        <td>Kiambu</td>
+                                        <td><a href="#">120</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-
+<!-- Events by other users will appear here -->
                         <div class="tab-pane fade" id="panel2" role="tabpanel">
-                            <p>Action two</p>
-                        </div>
+                                <table class="table">
+                                        <thead>
+                                            <th>Event</th>
+                                            <th>Category</th>
+                                            <th>Date</th>
+                                            <th>Location</th>
+                                            <th>RSVP'd</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Barmitzvah</td>
+                                                <td>Party</td>
+                                                <td>1/12/17</td>
+                                                <td>Nairobi</td>
+                                                <td><input type="checkbox" checked data-toggle="toggle"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Keziah's Birthday</td>
+                                                <td>Party</td>
+                                                <td>12/12/17</td>
+                                                <td>Thika</td>
+                                                <td><a href="#">1</a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Baptism</td>
+                                                <td>Rite</td>
+                                                <td>1/12/17</td>
+                                                <td>Kiambu</td>
+                                                <td><a href="#">120</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>                        </div>
                     </div>
                 </div>
             </div>            
