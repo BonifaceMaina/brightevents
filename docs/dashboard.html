@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/png" href="images/icon.png">    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href=' http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>        
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Dashboard</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-inverse">
+            <div class="navbar-header">
+                <button type="button" data-target="#navbarcollapse" data-toggle="collapse" class="navbar-toggle">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="index.html" class="navbar-brand">Bright Events</a>
+            </div>
+            <div id="navbarcollapse" class="collapse navbar-collapse pull-right">
+                <ul class="nav navbar-nav">
+                    <li><a href="#"> About Us</a></li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Event Types <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Crowdfunding</a></li>
+                            <li><a href="#">Reunions</a></li>
+                            <li><a href="#">Concerts</a></li>
+                            <li><a href="#">Meetups</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <ul class="nav nav-tabs nav-justified">
+                        <li class="nav-item active">
+                            <a class="nav-link " data-toggle="tab" href="#panel1" role="tab">My Events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#panel2" role="tab">Other Events</a>
+                        </li>
+                    </ul>
+<!-- these are my events -->
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="panel1" role="tabpanel">
+                            <!-- button to open modal for adding events -->
+                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal">Add Event</button>
+                            <!-- modal -->
+                            <div id="modal" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- content -->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h3 class="text-center">Create a new event</h3>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="#">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Event Name">                                                        
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <select name="category" id="#" placeholder="Category" class="form-control">
+                                                        <option value="">Select Category</option>
+                                                        <option value="1">Crowdfunding</option>
+                                                        <option value="2">Reunions</option>
+                                                        <option value="3">Concerts</option>
+                                                        <option value="4">Meetups</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" name="location" id="#" placeholder="Location">                                                        
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" name="date" id="date" placeholder="Date">
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-info">Add</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            
+                            <table class="table">
+                                <thead>
+                                    <th>Event</th>
+                                    <th>Category</th>
+                                    <th>Date</th>
+                                    <th>Location</th>
+                                    <th>RSVP'd</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><a href="event.html">Barmitzvah</a></td>
+                                        <td>Party</td>
+                                        <td>1/12/17</td>
+                                        <td>Nairobi</td>
+                                        <td><span class="badge">12</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#">Keziah's Birthday</a></td>
+                                        <td>Party</td>
+                                        <td>12/12/17</td>
+                                        <td>Thika</td>
+                                        <td><span class="badge">14</span></td>                                        
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#">Baptism</a></td>
+                                        <td>Rite</td>
+                                        <td>1/12/17</td>
+                                        <td>Kiambu</td>
+                                        <td><span class="badge">21</span></td>                                        
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+<!-- Events by other users will appear here -->
+                        <div class="tab-pane fade" id="panel2" role="tabpanel">
+                            <div class="form-group events-container">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="filter" id="filter" placeholder="Search or filter events by name, location or category">                                   
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>                                    
+                                </div>
+                            </div>
+                            <table class="table">
+                                <thead>
+                                    <th>Event</th>
+                                    <th>Category</th>
+                                    <th>Date</th>
+                                    <th>Location</th>
+                                    <th>RSVP'd</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><a href="#">Graduation</a></td>
+                                        <td>Party</td>
+                                        <td>1/12/17</td>
+                                        <td>Nairobi</td>
+                                        <td>87</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#">Sam's Birthday</a></td>
+                                        <td>Party</td>
+                                        <td>12/12/17</td>
+                                        <td>Thika</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#">Dedication</a></td>
+                                        <td>Rite</td>
+                                        <td>1/12/17</td>
+                                        <td>Kiambu</td>
+                                        <td>120</td>
+                                    </tr>
+                                </tbody>
+                            </table>     
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>  
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="    crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
+    <script src="js/js.js"></script>
+</body>
+</html>
