@@ -12,6 +12,7 @@
 </head>
 <body>
     <header>
+        <!-- navigation bar -->
         <nav class="navbar navbar-inverse">
             <div class="navbar-header">
                 <button type="button" data-target="#navbarcollapse" data-toggle="collapse" class="navbar-toggle">
@@ -39,12 +40,13 @@
     </header>
     <div class="container">
         <div class="row">
+            <!-- panel holding the event -->
             <div class="panel panel-default">
                 <div class="panel-heading">
 
                 </div>
                 <div class="panel-body">
-                <!-- tabs -->
+                <!-- table with event information -->
                     <table class="table">
                         <thead>
                         </thead>
@@ -114,39 +116,36 @@
                     </div>
 
                         <!-- delete modal -->
-                        <div id="deleteModal" class="modal fade" role="dialog">
-                                <div class="modal-dialog">
-                                    <!-- content -->
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h3 class="text-center">Delete Event</h3>
-                                        </div>
-                                        <div class="modal-body">
-                                            <!-- form on the modal -->
-                                            <form action="#">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Event Name">                                                        
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" name="location" id="#" placeholder="Location">                                                        
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <input type="date" class="form-control" name="date" id="date" placeholder="Date">
-                                                </div>
-                                                <div class="form-group">
-                                                        <textarea class="form-control" name="description" id="description" placeholder="Description"></textarea>
-                                                </div>
-                                                <button type="submit" class="btn btn-info">Delete Event</button>
-                                                <button class="btn btn-default pull-right" data-dismiss="modal">Dismiss</button>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
+                    <div id="deleteModal" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- content -->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3 class="text-center">Delete Event</h3>
                                     </div>
+                                    <div class="modal-body">
+                                        <!-- form on the modal -->
+                                        <form action="#">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="Event Name">                                                        
+                                            </div>
+
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="location" id="#" placeholder="Location">                                                        
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                    <textarea class="form-control" name="description" id="description" placeholder="Description"></textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-info">Delete Event</button>
+                                            <button class="btn btn-default pull-right" data-dismiss="modal">Dismiss</button>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
                                 </div>
                             </div>
-                        </div>                    
+                        </div>
+                    </div>                    
                 </div>
             </div>           
         </div>
