@@ -53,7 +53,7 @@
                                 <a class="nav-link" data-toggle="tab" href="#panel3" role="tab">Events Attending</a>
                         </li>
                     </ul>
-<!-- these are my events -->
+    <!-- these are my events -->
                     <div class="tab-content">
                         <div class="tab-pane fade in active" id="panel1" role="tabpanel">
                             <!-- button to open modal for adding events -->
@@ -67,6 +67,7 @@
                                             <h3 class="text-center">Create a new event</h3>
                                         </div>
                                         <div class="modal-body">
+                                            <!-- form on the modal -->
                                             <form action="#">
                                                 <div class="form-group">
                                                     <input type="text" class="form-control" placeholder="Event Name">                                                        
@@ -91,16 +92,15 @@
                                                 </div>
                                                 <div class="form-group">
                                                         <textarea class="form-control" name="description" id="description" placeholder="Description"></textarea>
-                                                    </div>
+                                                </div>
+                                                <button type="submit" class="btn btn-info">Add Event</button>
+                                                <button class="btn btn-default pull-right" data-dismiss="modal">Dismiss</button>
                                             </form>
                                         </div>
                                         <div class="modal-footer">
-                                            <button class="btn btn-info">Add</button>
                                         </div>
-
                                     </div>
                                 </div>
-
                             </div>
                             
                             <table class="table">
@@ -128,7 +128,7 @@
                                 </tbody>
                             </table>
                         </div>
-<!-- Events by other users will appear here -->
+    <!-- Events by other users will appear here -->
                         <div class="tab-pane fade" id="panel2" role="tabpanel">
                             <div class="form-group events-container">
                                 <div class="input-group">
@@ -162,7 +162,7 @@
                             </table>     
                         </div>
 
-                        <!-- events I have RSVP'd to -->
+    <!-- events I have RSVP'd to -->
 
                          <div class="tab-pane fade" id="panel3" role="tabpanel">
                             <table class="table">
