@@ -1,0 +1,162 @@
+{% extends "baselayout.html"%}
+{% block content %}
+
+<div class="container">
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <ul class="nav nav-tabs nav-justified">
+                        <li class="nav-item active">
+                            <a class="nav-link " data-toggle="tab" href="#panel1" role="tab">My Events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#panel2" role="tab">Other Events</a>
+                        </li>
+                        <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#panel3" role="tab">Events Attending</a>
+                        </li>
+                    </ul>
+    <!-- these are my events -->
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="panel1" role="tabpanel">
+                            <!-- button to open modal for adding events -->
+                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal">Add Event</button>
+                            <!-- modal -->
+                            <div id="modal" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <!-- content -->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h3 class="text-center">Create a new event</h3>
+                                        </div>
+                                        <div class="modal-body">
+                                            <!-- form on the modal -->
+                                            <form action="#">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Event Name">                                                        
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <select name="category" id="#" placeholder="Category" class="form-control">
+                                                        <option value="">Select Category</option>
+                                                        <option value="1">Crowdfunding</option>
+                                                        <option value="2">Reunions</option>
+                                                        <option value="3">Concerts</option>
+                                                        <option value="4">Meetups</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" name="location" id="#" placeholder="Location">                                                        
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <input type="date" class="form-control" name="date" id="date" placeholder="Date">
+                                                </div>
+                                                <div class="form-group">
+                                                        <textarea class="form-control" name="description" id="description" placeholder="Description"></textarea>
+                                                </div>
+                                                <button type="submit" class="btn btn-info">Add Event</button>
+                                                <button class="btn btn-default pull-right" data-dismiss="modal">Dismiss</button>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <table class="table">
+                                <thead>
+                                    <th>Event</th>
+                                    <th>Category</th>
+                                    <th>RSVP'd</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><a href="myevent.html">Barmitzvah</a></td>
+                                        <td>Party</td>
+                                        <td><span class="badge">12</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#">Keziah's Birthday</a></td>
+                                        <td>Party</td>
+                                        <td><span class="badge">14</span></td>                                        
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#">Baptism</a></td>
+                                        <td>Rite</td>
+                                        <td><span class="badge">21</span></td>                                        
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+    <!-- Events by other users will appear here -->
+                        <div class="tab-pane fade" id="panel2" role="tabpanel">
+                            <div class="form-group events-container">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="filter" id="filter" placeholder="Search or filter events by name, location or category">                                   
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>                                    
+                                </div>
+                            </div>
+                            <table class="table">
+                                <thead>
+                                    <th>Event</th>
+                                    <th>Category</th>
+                                    <th>RSVP'd</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><a href="otherevents.html">Graduation</a></td>
+                                        <td>Party</td>
+                                        <td><span class="badge">14</span></td>                                        
+                                    </tr>
+                                    <tr>
+                                        <td><a href="otherevents.html">Sam's Birthday</a></td>
+                                        <td>Party</td>
+                                        <td><span class="badge">1</span></td>                                        
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#">Dedication</a></td>
+                                        <td>Rite</td>
+                                        <td><span class="badge">67</span></td>                                        
+                                    </tr>
+                                </tbody>
+                            </table>     
+                        </div>
+
+    <!-- events I have RSVP'd to -->
+
+                         <div class="tab-pane fade" id="panel3" role="tabpanel">
+                            <table class="table">
+                                <thead>
+                                    <th>Event</th>
+                                    <th>Category</th>
+                                    <th>Date</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Graduation</td>
+                                        <td>Party</td>
+                                        <td>12/2/2018</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sam's Birthday</td>
+                                        <td>Party</td>
+                                        <td>1/1/2018</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dedication</td>
+                                        <td>Rite</td>
+                                        <td>12/12/2017</td>
+                                    </tr>
+                                </tbody>
+                            </table>     
+                        </div>                        
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div> 
+    
+{% endblock %}

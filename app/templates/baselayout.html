@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/png" href="images/icon.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href=' http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>        
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-inverse">
+            <div class="navbar-header">
+                <button type="button" data-target="#navbarcollapse" data-toggle="collapse" class="navbar-toggle">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="index.html" class="navbar-brand">Bright Events</a>
+            </div>
+            <div id="navbarcollapse" class="collapse navbar-collapse pull-right">
+                <ul class="nav navbar-nav">
+                    <li><a href="#"> About Us</a></li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Event Types <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Crowdfunding</a></li>
+                            <li><a href="#">Reunions</a></li>
+                            <li><a href="#">Concerts</a></li>
+                            <li><a href="#">Meetups</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    {% block content %}{% endblock %}
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>    
