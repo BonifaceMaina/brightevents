@@ -1,0 +1,39 @@
+{% extends "baselayout.html"%}
+{% block content %}
+<div class="container">
+        <div class="row index">
+            <div class="col-md-offset-6 col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="text-center">Log in to access your dashboard</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form action="/dashboard" method="post">                                    
+                            <div class="form-group row">
+                                <label for="name" class="col-sm-4">Email</label>
+                                <div class="col-sm-8">
+                                <input class="form-control" id="email" name="email" placeholder="Enter email" required type="email" value="">
+                                </div>
+                            </div>
+                    
+                            <div class="form-group row">
+                                <label for="password" class="col-sm-4">Password</label>
+                                <div class="col-sm-8">
+                                <input class="form-control" id="password" name="password" placeholder="Enter Password" required="True" type="password" value="">
+                                </div>
+                            </div>                                 
+                    
+                            <div class="form-group row">
+                                <div class="col-sm-offset-4 col-sm-8">
+                                <button type="submit" class="btn btn-info" id="submit">Login</button>
+                                <span class="pull-right"> <i>&nbsp;</i><a href="{{url_for('index')}}"> Go to Registration</a></span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

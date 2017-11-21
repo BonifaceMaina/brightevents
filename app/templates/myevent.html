@@ -1,0 +1,117 @@
+{% extends "baselayout.html"%}
+{% block content %}
+
+<div class="container">
+        <div class="row">
+            <!-- panel holding the event -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+
+                </div>
+                <div class="panel-body">
+                <!-- table with event information -->
+                    <table class="table">
+                        <thead>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Barmitzvah 
+                                    <br><br>
+                                    &nbsp;<span class="glyphicon glyphicon-edit" data-toggle="modal" data-target="#editModal"></span> &nbsp; &nbsp;
+                                    &nbsp;<span class="glyphicon glyphicon-trash" data-toggle="modal" data-target="#deleteModal"></span> &nbsp; &nbsp;                                 
+                                </td>
+                                <td><b>Description</b>
+                                    <p>This is the Barmitzvah to our youngest Herman.</p>
+                                </td>
+                                <td>
+                                    <p><b>Information about the event.</b></p>
+                                    <p><b> Number attending</b>&nbsp;<span class="badge">21</span></p> 
+                                    <p><b> Location:</b>&nbsp; 525, Kindaruma Road.</p>
+                                </td>
+                                <td><b>Attendees</b></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- edit modal -->
+                    <div id="editModal" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- content -->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3 class="text-center">Edit Event</h3>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!-- form on the modal -->
+                                        <form action="#">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="Event Name">                                                        
+                                            </div>
+
+                                            <div class="form-group">
+                                                <select name="category" id="#" placeholder="Category" class="form-control">
+                                                    <option value="">Select Category</option>
+                                                    <option value="1">Crowdfunding</option>
+                                                    <option value="2">Reunions</option>
+                                                    <option value="3">Concerts</option>
+                                                    <option value="4">Meetups</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="location" id="#" placeholder="Location">                                                        
+                                            </div>
+
+                                            <div class="form-group">
+                                                <input type="date" class="form-control" name="date" id="date" placeholder="Date">
+                                            </div>
+                                            <div class="form-group">
+                                                    <textarea class="form-control" name="description" id="description" placeholder="Description"></textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-info">Edit Event</button>
+                                            <button class="btn btn-default pull-right" data-dismiss="modal">Dismiss</button>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                        <!-- delete modal -->
+                    <div id="deleteModal" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- content -->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h3 class="text-center">Delete Event</h3>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!-- form on the modal -->
+                                        <form action="#">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="Event Name">                                                        
+                                            </div>
+
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="location" id="#" placeholder="Location">                                                        
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                    <textarea class="form-control" name="description" id="description" placeholder="Description"></textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-info">Delete Event</button>
+                                            <button class="btn btn-default pull-right" data-dismiss="modal">Dismiss</button>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+            </div>           
+        </div>
+    </div>
+    
+{% endblock %}
