@@ -25,13 +25,25 @@ def login():
         if form.validate():
             email = form.email.data
             password = form.password.data
+            return redirect(url_for('dashboard'))
 
         return render_template('login.html', form=form)
     return render_template('login.html', form=form)
 
-@app.route('/dashboard', methods=['POST'])
+@app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
-    return render_template('dashboard.html')
+    form = EventForm()
+    if request.method == 'POST':
+        form = EventForm(request.form)
+        if form.validate():
+            name = form.name.data
+            category = form.category.data
+            location = form.location.data
+            date = form.date.data
+            description = form.description.data
+            return jsonify(status='ok')
+        return render_template('dashboard.html', form=form)
+    return render_template('dashboard.html', form=form)
 
 @app.route('/myevent')
 def myevent():

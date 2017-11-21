@@ -32,9 +32,16 @@
                                         </div>
                                         <div class="modal-body">
                                             <!-- form on the modal -->
-                                            <form action="#">
+                                            <form action="{{url_for('dashboard')}}" method="post" id="eventform">
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Event Name">                                                        
+                                                    {{ form.name(class_ = "form-control", placeholder = "Event Name", required = "True") }}                                                                                
+                                                    {% if form.name.errors %}                                    
+                                                    <p>
+                                                    {% for error in form.name.errors %}
+                                                        <small class="text-danger"><strong>{{ form.name.label }}: </strong>{{ error }}</small>
+                                                    {% endfor %}
+                                                    </p>
+                                                    {% endif %}    
                                                 </div>
 
                                                 <div class="form-group">
@@ -48,16 +55,38 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" name="location" id="#" placeholder="Location">                                                        
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <input type="date" class="form-control" name="date" id="date" placeholder="Date">
-                                                </div>
-                                                <div class="form-group">
-                                                        <textarea class="form-control" name="description" id="description" placeholder="Description"></textarea>
-                                                </div>
-                                                <button type="submit" class="btn btn-info">Add Event</button>
+                                                        {{ form.location(class_ = "form-control", placeholder = "Enter Location", required = "True") }}                                                                                
+                                                        {% if form.location.errors %}                                    
+                                                        <p>
+                                                        {% for error in form.location.errors %}
+                                                            <small class="text-danger"><strong>{{ form.location.label }}: </strong>{{ error }}</small>
+                                                        {% endfor %}
+                                                        </p>
+                                                        {% endif %}
+                                                    </div>
+        
+                                                    <div class="form-group">
+                                                        {{ form.date(class_ = "form-control", type = "date", required = "True") }}                                                                                
+                                                        {% if form.date.errors %}                                    
+                                                        <p>
+                                                        {% for error in form.date.errors %}
+                                                            <small class="text-danger"><strong>{{ form.date.label }}: </strong>{{ error }}</small>
+                                                        {% endfor %}
+                                                        </p>
+                                                        {% endif %}
+                                                    </div>
+        
+                                                    <div class="form-group">
+                                                        {{ form.description(class_ = "form-control", placeholder = "Enter Description", required = "True") }}                                                                                
+                                                        {% if form.description.errors %}                                    
+                                                        <p>
+                                                        {% for error in form.description.errors %}
+                                                            <small class="text-danger"><strong>{{ form.description.label }}: </strong>{{ error }}</small>
+                                                        {% endfor %}
+                                                        </p>
+                                                        {% endif %}
+                                                    </div>
+                                                <button type="submit" class="btn btn-info" id="submit">Add Event</button>
                                                 <button class="btn btn-default pull-right" data-dismiss="modal">Dismiss</button>
                                             </form>
                                         </div>
