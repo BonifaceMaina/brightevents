@@ -10,32 +10,61 @@
                     </div>
                     <div class="panel-body">
                     
-                        <form action="/dashboard" method="post">
+                        <form action="{{url}}" method="post">
                             <div class="form-group row">
                                 <label for="Name" class="col-sm-4">Name</label>
                                 <div class="col-sm-8">
-                                <input type="text" name="name" class="form-control" placeholder="Enter Name">
+                                {{ form.name(class_ = "form-control", placeholder = "Enter Name", required = "True") }}                                        
+                                {% if form.name.errors %}                                    
+                                <p>
+                                {% for error in form.name.errors %}
+                                    <small class="text-danger"><strong>{{ form.name.label }}: </strong>{{ error }}</small>
+                                {% endfor %}
+                                </p>
+                                {% endif %}
                                 </div>
                             </div>
                     
                             <div class="form-group row">
                                 <label for="name" class="col-sm-4">Email</label>
                                 <div class="col-sm-8">
-                                <input class="form-control" id="email" name="email" placeholder="Enter email" required type="email" value="">
+                                    {{ form.email(class_ = "form-control", placeholder = "Enter Email", required = "True") }}                                                                                
+                                    {% if form.email.errors %}                                    
+                                    <p>
+                                    {% for error in form.email.errors %}
+                                        <small class="text-danger"><strong>{{ form.email.label }}: </strong>{{ error }}</small>
+                                    {% endfor %}
+                                    </p>
+                                    {% endif %}
                                 </div>
                             </div>
                     
                             <div class="form-group row">
                                 <label for="password" class="col-sm-4">Password</label>
                                 <div class="col-sm-8">
-                                <input class="form-control" id="password" name="password" placeholder="Enter Password" required="True" type="password" value="">
+                                    {{ form.password(class_ = "form-control", placeholder = "Enter Password", required = "True") }}                                        
+                                    {% if form.password.errors %}                                    
+                                    <p>
+                                    {% for error in form.password.errors %}
+                                        <small class="text-danger"><strong>{{ form.password.label }}: </strong>{{ error }}</small>
+                                    {% endfor %}
+                                    </p>
+                                    {% endif %}
                                 </div>
                             </div>
                     
                             <div class="form-group row">
                                 <label for="password-confirm" class="col-sm-4">Confirm Password</label>
                                 <div class="col-sm-8">
-                                <input class="form-control" id="confirm" name="confirm" placeholder="Confirm Password" required="True" type="password" value="">
+                                    {{ form.confirm(class_ = "form-control", placeholder = "Confirm Password", required = "True") }}                                        
+                                    {% if form.confirm.errors %}                                    
+                                    <p>
+                                    {% for error in form.confirm.errors %}
+                                        <small class="text-danger"><strong>{{ form.confirm.label }}: </strong>{{ error }}</small>
+                                    {% endfor %}
+                                    </p>
+                                    {% endif %}
+                                        
                                 </div>                                  
                             </div>                                  
                     
