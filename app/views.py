@@ -1,7 +1,6 @@
 from flask import render_template, url_for, redirect, request
 from forms import *
 from app import app
-from flask.views import View
 
 @app.route('/', methods=['POST', 'GET'])
 @app.route('/index', methods=['POST', 'GET'])
@@ -32,22 +31,42 @@ def login():
 
 @app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
-    form = EventForm()
+    form = AddEventForm()
     if request.method == 'POST':
-        form = EventForm(request.form)
-        if form.validate():
+        form = AddEventForm(request.form)
+        if form.validate_on_submit():
             name = form.name.data
             category = form.category.data
             location = form.location.data
             date = form.date.data
             description = form.description.data
-            return jsonify(status='ok')
         return render_template('dashboard.html', form=form)
     return render_template('dashboard.html', form=form)
 
 @app.route('/myevent')
 def myevent():
-    return render_template('myevent.html')
+    form = AddEventForm()
+    return render_template('myevent.html', form=form)
+
+@app.route('/editevent', methods=['POST'])
+def editevent():
+    form = EditEventForm(request.form)
+    if form.validate():
+        name = form.name.data
+        category = form.category.data
+        location = form.location.data
+        date = form.date.data
+        description = form.description.data            
+    return render_template('myevent.html', form=form)
+
+@app.route('/deleteevent', methods=['POST'])
+def deleteevent():
+    form = DeleteEventForm(request.form)
+    if form.validate:
+        name = form.name.data
+        location = form.location.data
+        description = form.description.data
+    return redirect(url_for('myevent'))
 
 @app.route('/otherevents')
 def otherevents():
