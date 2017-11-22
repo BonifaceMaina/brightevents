@@ -1,19 +1,18 @@
-from flask import render_template, url_for, redirect, request
+from flask import render_template, url_for, redirect, request, jsonify
 from forms import *
 from app import app
+incomes = [
+  { 'description': 'salary', 'amount': 5000 }
+]
 
-@app.route('/', methods=['POST', 'GET'])
-@app.route('/index', methods=['POST', 'GET'])
-def index():
-    form = RegistrationForm()
+@app.route('/api/auth/register', methods=['POST'])
+def register():
     if request.method == 'POST':
-        form = RegistrationForm(request.form)
-        if form.validate():
-            name = form.name.data
-            email = form.email.data
-            password = form.password.data
+        name = request.data['name']
+        email = request.data['email']
+        password = request.data['password']
         return render_template('index.html', form=form)
-    return render_template('index.html', form=form)
+    return jsonify(incomes)
 
 
 @app.route('/login', methods=['POST', 'GET'])
