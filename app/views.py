@@ -5,17 +5,16 @@ incomes = [
   { 'description': 'salary', 'amount': 5000 }
 ]
 
-@app.route('/api/auth/register', methods=['POST'])
+@app.route('/api/auth/register/', methods=['POST', 'GET'])
 def register():
     if request.method == 'POST':
         name = request.data['name']
         email = request.data['email']
         password = request.data['password']
-        return render_template('index.html', form=form)
     return jsonify(incomes)
 
 
-@app.route('/login', methods=['POST', 'GET'])
+@app.route('api/auth/login', methods=['POST', 'GET'])
 def login():
     form = LoginForm()
     if request.method == 'POST':
@@ -28,21 +27,24 @@ def login():
         return render_template('login.html', form=form)
     return render_template('login.html', form=form)
 
-@app.route('/dashboard', methods=['GET', 'POST'])
-def dashboard():
-    form = AddEventForm()
-    if request.method == 'POST':
-        form = AddEventForm(request.form)
-        if form.validate_on_submit():
-            name = form.name.data
-            category = form.category.data
-            location = form.location.data
-            date = form.date.data
-            description = form.description.data
-        return render_template('dashboard.html', form=form)
-    return render_template('dashboard.html', form=form)
 
-@app.route('/myevent')
+@app.route('/api/auth/reset-password', methods='POST')
+def resetpassword():
+    pass
+
+
+@app.route('/events', methods=['POST'])
+def dashboard():
+    if request.method == 'POST':
+        name = request.data['name']
+        category = request.data['category']
+        location = request.data['location']
+        date = request.data['date']
+        description = request.data['description']
+    return jsonify (incomes)
+
+
+@app.route('/')
 def myevent():
     form = AddEventForm()
     return render_template('myevent.html', form=form)
