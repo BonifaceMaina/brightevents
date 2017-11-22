@@ -1,4 +1,5 @@
 import unittest
+from app.models import User, UserEvent, OtherEvents
 
 from app import app
 
@@ -38,11 +39,7 @@ class UserTesting(unittest.TestCase):
     def test_registration(self):
         """test user registration"""
         client = app.test_client(self)
-        resp = client.post('/', data=dict(name="john", 
-                                            email="john@gmail.com", 
-                                            password="pass123", 
-                                            confirm="pass123"), 
-                                            follow_redirects=True)
+        resp = client.post(self.default_user_data, follow_redirects=True)
         self.assertTrue(b'Events' in resp.data)
 
     def test_login_success(self):
@@ -54,6 +51,9 @@ class UserTesting(unittest.TestCase):
                                             follow_redirects=True)
         self.assertTrue(b'Events' in resp.data)
 
+    def test_multiple_registration(self):
+        # something
+        client = app.test_client(self)
 
 
 if __name__ == '__main__':
