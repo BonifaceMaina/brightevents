@@ -1,55 +1,49 @@
 import unittest
-from app.models import User, UserEvent, OtherEvents
+from flask import json
+from app.models import User, Events
 
 from app import app
 
 class ViewTesting(unittest.TestCase):
-    def test_index_loads(self):
+    def test_registration(self):
         client = app.test_client(self)
-        resp = client.get('/', content_type='html/text')
+        resp = client.post('/api/auth/register')
         self.assertEqual(resp.status_code, 200)
 
 
-    def test_logout_redirects_to_login(self):
+    def test_login(self):
         client = app.test_client(self)
-        resp = client.get('/logout', follow_redirects=True)
+        resp = client.post('/api/auth/login')
         self.assertEqual(resp.status_code, 200)
 
-    def test_dashboard_redirects_to_event(self):
+    def test_(self):
         client = app.test_client(self)
-        resp = client.get('/dashboard', follow_redirects=True)
-        self.assertEqual(resp.status_code, 200)
+        resp = client.get('/api/auth/login', follow_redirects=True)
+        self.assertEqual(resp.status_code, 405)
 
 
 
 class UserTesting(unittest.TestCase):
     """Testing user cases"""
-    def setUp(self):
-        User.users = {}
-        self.app = User('john', 'john@gmail.com', 'pass123' )
-        self.default_user_data = {
-            1:{
-                'name': 'john',
-                'email': 'john@gmail.com',
-                'password': 'pass123'
-            }
-        }
 
+    def test_routes(self):
+        client = app.test_client(self)
+        tst = client.post('/api/auth/register')
+        assert tst.content_type == 'application/json'
 
-    def test_registration(self):
+    def test_registration_does_not_allow_get(self):
         """test user registration"""
         client = app.test_client(self)
-        resp = client.post(self.default_user_data, follow_redirects=True)
-        self.assertTrue(b'Events' in resp.data)
+        resp = client.get('/api/auth/register')
+        self.assertEqual(resp.status_code, 405)
 
     def test_login_success(self):
         client = app.test_client(self)
-        resp = client.post('/login', data=dict(name="john", 
+        resp = client.post('/api/auth/login', data=dict( 
                                             email="john@gmail.com", 
-                                            password="pass123", 
-                                            confirm="pass123"), 
+                                            password="pass123"), 
                                             follow_redirects=True)
-        self.assertTrue(b'Events' in resp.data)
+        self.assertEqual(resp.status_code, 200)
 
     def test_multiple_registration(self):
         # something
