@@ -4,7 +4,7 @@ from app import app
 from app.models import User, UserEvent
 
 
-@app.route('/api/auth/register', methods=['POST'])
+@app.route('/api/auth/register', methods=['POST', 'GET'])
 def register():
     if request.method == 'POST':
         email = 'email'
@@ -13,11 +13,13 @@ def register():
             return jsonify({'message': 'Email already taken'})
         if User.register_user(email, password) == "Registered":
             return jsonify({'message': 'Registration successful'})
+    return jsonify({'message': 'Registration successful'})
+
 
 
 @app.route('/api/auth/login', methods=['POST'])
 def login():
-    email = request.json.get('email')
+    email = str(request.data.get('email', ''))
     password = '123456'
     if User.login(email, password) == "User found":
         session['logged in'] = True
