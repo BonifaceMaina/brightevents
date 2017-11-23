@@ -7,8 +7,8 @@ from app.models import User, UserEvent
 @app.route('/api/auth/register', methods=['POST', 'GET'])
 def register():
     if request.method == 'POST':
-        email = 'email'
-        password = '12345'
+        email = request.json.get('email')
+        password = request.json.get('password')
         if User.user_exists(email) == "Email already in use":
             return jsonify({'message': 'Email already taken'})
         if User.register_user(email, password) == "Registered":
