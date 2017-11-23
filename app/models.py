@@ -1,39 +1,34 @@
-user_database = {'karis.bm@gmail.com':'123456'}
+user_database = {'email':'password'}
 events = []
+
 
 from flask import Flask, session
 
 class User(object):
-    """all methods pertaining a user"""
+    """all operations pertaining a user"""
     @staticmethod
     def register_user(email, password):
         """saving the user"""
-        user_database[email] = password
-        return "Registered"
-       
-
-    @staticmethod
-    def user_exists(email):
         if user_database.get(email):
             return "Email already in use"
+        else:
+            user_database[email] = password
+            return "Registered"
 
     @staticmethod
     def login(email, password):
         if user_database.get(email):
             if user_database[email] == password:
                 return "User found"
-            return "Wrong username or password"
-        return "Username not found"
+            else:
+                return "Wrong username or password"
+        else:
+            return "Username not found"
     
     @staticmethod
     def logout():
         session['logged_in'] = False
 
-
-class UserEvent(object):
-    """all methods for user events"""
-
-    def __init__():
-        # something here
-        pass
+class Events(object):
+    """all operations associated with events"""
 
