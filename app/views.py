@@ -1,78 +1,64 @@
-from flask import render_template, url_for, redirect, request, jsonify
+from flask import request, jsonify, session, json
 from forms import *
 from app import app
-incomes = [
-  { 'description': 'salary', 'amount': 5000 }
-]
+from app.models import User, UserEvent
 
-@app.route('/api/auth/register/', methods=['POST', 'GET'])
+
+@app.route('/api/auth/register', methods=['POST'])
 def register():
     if request.method == 'POST':
-        name = request.data['name']
-        email = request.data['email']
-        password = request.data['password']
-    return jsonify(incomes)
+        email = 'email'
+        password = '12345'
+        if User.user_exists(email) == "Email already in use":
+            return jsonify({'message': 'Email already taken'})
+        if User.register_user(email, password) == "Registered":
+            return jsonify({'message': 'Registration successful'})
 
 
-@app.route('api/auth/login', methods=['POST', 'GET'])
+@app.route('/api/auth/login', methods=['POST'])
 def login():
-    form = LoginForm()
-    if request.method == 'POST':
-        form = LoginForm(request.form)
-        if form.validate():
-            email = form.email.data
-            password = form.password.data
-            return redirect(url_for('dashboard'))
+    email = request.json.get('email')
+    password = '123456'
+    if User.login(email, password) == "User found":
+        session['logged in'] = True
+        return jsonify({'message':'Login successful'})
+    elif User.login(email, password) == "Wrong username or password":
+        return jsonify({'message':'Wrong username or password'})     
+    else:
+        return jsonify({'message':"You are not registered"})   
 
-        return render_template('login.html', form=form)
-    return render_template('login.html', form=form)
 
-
-@app.route('/api/auth/reset-password', methods='POST')
+@app.route('/api/auth/reset-password', methods=['POST'])
 def resetpassword():
     pass
 
-
-@app.route('/events', methods=['POST'])
-def dashboard():
-    if request.method == 'POST':
-        name = request.data['name']
-        category = request.data['category']
-        location = request.data['location']
-        date = request.data['date']
-        description = request.data['description']
-    return jsonify (incomes)
-
-
-@app.route('/')
-def myevent():
-    form = AddEventForm()
-    return render_template('myevent.html', form=form)
-
-@app.route('/editevent', methods=['POST'])
-def editevent():
-    form = EditEventForm(request.form)
-    if form.validate():
-        name = form.name.data
-        category = form.category.data
-        location = form.location.data
-        date = form.date.data
-        description = form.description.data            
-    return render_template('myevent.html', form=form)
-
-@app.route('/deleteevent', methods=['POST'])
-def deleteevent():
-    form = DeleteEventForm(request.form)
-    if form.validate:
-        name = form.name.data
-        location = form.location.data
-        description = form.description.data
-    return redirect(url_for('myevent'))
-
-@app.route('/otherevents')
-def otherevents():
-    return render_template('otherevents.html')
-
-@app.route('/logout')
+@app.route('/api/auth/logout', methods=['POST'])
 def logout():
-    return redirect(url_for('login'))
+    if User.logout():
+        return jsonify({'message': 'You are logged out'})
+    
+    return jsonify({'message':'You are not logged in '})
+
+
+@app.route('/api/events', methods=['POST', 'GET'])
+def events():
+    if request.method == 'POST':
+        if session['logged_in']:
+            if User.getEvents():
+                pass
+            pass
+        pass
+    pass
+
+
+@app.route('/api/events/<eventId>', methods=['PUT'])
+def event():
+    pass
+
+@app.route('/api/events/<eventId>', methods=['DELETE'])
+def editevent():
+    pass
+
+@app.route('/api/event/<eventId>/rsvp')
+def rsvp():
+    pass

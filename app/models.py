@@ -1,54 +1,39 @@
-user_database = {}
-myevents = {}
-otherevents = {}
+user_database = {'karis.bm@gmail.com':'123456'}
+events = []
 
-
+from flask import Flask, session
 
 class User(object):
     """all methods pertaining a user"""
+    @staticmethod
+    def register_user(email, password):
+        """saving the user"""
+        user_database[email] = password
+        return "Registered"
+       
 
-    
-    def __init__(self):
-        # something goes here
-
-    def register_user(self, name, email, password):
+    @staticmethod
+    def user_exists(email):
         if user_database.get(email):
-            return "Email exists. Use another"
-        else:
-            user_database[user] = password
-        return "Registration successful"
+            return "Email already in use"
 
-        #add user
+    @staticmethod
+    def login(email, password):
+        if user_database.get(email):
+            if user_database[email] == password:
+                return "User found"
+            return "Wrong username or password"
+        return "Username not found"
+    
+    @staticmethod
+    def logout():
+        session['logged_in'] = False
+
 
 class UserEvent(object):
     """all methods for user events"""
 
-    def __init__(self, name, caategory, location, date, description):
+    def __init__():
         # something here
+        pass
 
-    def create_event(self):
-        # something here
-
-    def edit_event(self):
-        # something else
-
-    def delete_event(self):
-        # something here
-
-    def show_personal_events(self):
-        # something here
-
-    def rsvp():
-
-    def show_rsvpd(self):
-        # something here
-
-
-class OtherEvents(object):
-    """methods for all other events"""
-
-    def show_event(self):
-        # something here
-
-    def show_all(self):
-        # something else
