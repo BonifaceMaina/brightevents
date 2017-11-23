@@ -1,6 +1,5 @@
 import unittest
 from flask import json
-from app.models import User, Events
 
 from app import app
 
@@ -8,12 +7,6 @@ class ViewTesting(unittest.TestCase):
     def test_registration(self):
         client = app.test_client(self)
         resp = client.post('/api/auth/register')
-        self.assertEqual(resp.status_code, 200)
-
-
-    def test_login(self):
-        client = app.test_client(self)
-        resp = client.post('/api/auth/login')
         self.assertEqual(resp.status_code, 200)
 
     def test_(self):
@@ -39,9 +32,9 @@ class UserTesting(unittest.TestCase):
 
     def test_login_success(self):
         client = app.test_client(self)
-        resp = client.post('/api/auth/login', data=dict( 
+        resp = client.post('/api/auth/login', data=dict(
                                             email="john@gmail.com", 
-                                            password="pass123"), 
+                                            password="pass123"),
                                             follow_redirects=True)
         self.assertEqual(resp.status_code, 200)
 
