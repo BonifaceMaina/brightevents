@@ -1,7 +1,7 @@
 language: python
 sudo: enabled
 python:
-  - 3.4
+  - 2.7
 env:
   - FLASK=0.12  
 before_script:
