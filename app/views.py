@@ -56,12 +56,19 @@ def logout():
 def events():
     """getting all events pertaining a user"""
     if request.method == 'POST':
-        if session['logged_in']:
-            if User.getEvents():
-                pass
-            pass
-        pass
-    pass
+        event = request.args.get('event')
+        if Events.create_event(event) == "That event already exists":
+                return jsonify({'message': 'That event already exists'})
+        else:
+            if Events.create_event(event) == "Event added":
+                return jsonify("Event Added")
+    else:
+        if Events.get_events() == "You do not have events":
+            return jsonify({'message':'You do not have events'})
+        else:
+            if Events.get_events() == "There are no events":
+                return jsonify({'message':'There are no events to show'})
+
 
 
 @app.route('/api/events/<eventId>', methods=['PUT'])
